@@ -5,6 +5,18 @@ void setupSong(){
     case 0:
       bpm = 125;
       
+      noteType.add(1);
+      noteTime.add(0);
+      noteType.add(2);
+      noteTime.add(10);
+      noteType.add(2);
+      noteTime.add(14);
+      noteType.add(3);
+      noteTime.add(28);
+      noteType.add(0);
+      noteTime.add(32);
+      noteType.add(0);
+      noteTime.add(36);
       break;
     case 1:
       bpm = 126;
