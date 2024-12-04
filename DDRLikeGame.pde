@@ -13,6 +13,7 @@ int songChosen = 0;
 int health = 100;
 int missedFrame;
 int hitFrame;
+int konami = 0;
 boolean playingSong = false;
 boolean upPressed = false, downPressed = false, leftPressed = false, rightPressed = false;
 PFont font;
@@ -59,6 +60,7 @@ void menuScreen(){
 }
 
 void reset(){
+  konami = 0;
   if(songChosen == 0){
     californiaGurls.stop();
   }
@@ -149,6 +151,69 @@ void keyPressed(){
   }
   if(key == 'r' && playingSong){
     reset();
+  }
+  switch(konami){
+    case 0:
+    if(key == 'w'){
+      konami += 1;
+    }
+      break;
+    case 1:
+    if(key == 'w'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 2:
+    if(key == 's'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 3:
+    if(key == 's'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 4:
+    if(key == 'a'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 5:
+    if(key == 'd'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 6:
+    if(key == 'a'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
+    case 7:
+    if(key == 'd'){
+      konami += 1;
+    }
+    else{
+      konami = 0;
+    }
+      break;
   }
 }
 

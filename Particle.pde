@@ -2,6 +2,7 @@ class Particle{
   PVector position = new PVector(random(0,600), random(0,900));
   PVector velocity = new PVector();
   PVector acceleration = new PVector();
+  float rotation = random(0, radians(360));
 }
 
 void moveParticles(){
@@ -20,6 +21,7 @@ void moveParticles(){
       particles.get(i).velocity.y = -particles.get(i).velocity.y;
     }
     particles.get(i).position.y += particles.get(i).velocity.y;
+    particles.get(i).rotation += random(0,0.2);
   }
 }
 
@@ -27,6 +29,16 @@ void drawParticles(){
   stroke(255);
   strokeWeight(5);
   for(int i = 0; i < particles.size(); i++){
-    point(particles.get(i).position.x, particles.get(i).position.y);
+    println(konami);
+    if(konami == 8){
+      pushMatrix();
+      translate(particles.get(i).position.x, particles.get(i).position.y);
+      rotate(particles.get(i).rotation);
+        image(edgardKitBL, -35, -35, 75, 75);
+      popMatrix();
+    }
+    else{
+      point(particles.get(i).position.x, particles.get(i).position.y);
+    }
   }
 }

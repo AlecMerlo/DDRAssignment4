@@ -53,6 +53,39 @@ void setupSong(){
       noteTime.add(150);
       noteType.add(1);
       noteTime.add(156);
+      noteType.add(1);
+      noteTime.add(166);
+      noteType.add(0);
+      noteTime.add(170);
+      noteType.add(0);
+      noteTime.add(174);
+      noteType.add(0);
+      noteTime.add(184);
+      noteType.add(0);
+      noteTime.add(198);
+      noteType.add(3);
+      noteTime.add(201);
+      noteType.add(1);
+      noteTime.add(204);
+      noteType.add(1);
+      noteTime.add(222);
+      noteType.add(2);
+      noteTime.add(225);
+      noteType.add(3);
+      noteTime.add(228);
+      noteType.add(0);
+      noteTime.add(231);
+      noteType.add(0);
+      noteTime.add(234);
+      noteType.add(3);
+      noteTime.add(237);
+      noteType.add(2);
+      noteTime.add(240);
+      noteType.add(0);
+      noteTime.add(243);
+      noteType.add(1);
+      noteTime.add(248);
+      
       
       break;
     case 1:
@@ -88,7 +121,6 @@ void setupSong(){
 }
 
 void playSong(){
-  println(health);
   if(frame % (bpm / 4) == 0){
     switch(songChosen){
       //California Gurls
