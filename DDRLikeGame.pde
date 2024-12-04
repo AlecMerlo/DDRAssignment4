@@ -112,13 +112,13 @@ void keyPressed(){
     playingSong = true;
   }
   // scrolling through songs
-  if(keyCode == UP && !playingSong){
+  if((keyCode == UP || key == 'w') && !playingSong){
     songChosen -= 1;
     if(songChosen == -1){
       songChosen = 1;
     }
   }
-  if(keyCode == DOWN && !playingSong){
+  if((keyCode == DOWN || key == 's') && !playingSong){
     songChosen += 1;
     if(songChosen == 2){
       songChosen = 0;
