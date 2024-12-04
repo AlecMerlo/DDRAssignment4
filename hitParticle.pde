@@ -1,7 +1,7 @@
 class HitParticle{
   PVector position = new PVector();
-  PVector velocity = new PVector(random(-1, 1), random(-1, 1));
-  PVector acceleration = new PVector(-velocity.x/20, -velocity.y/20);
+  PVector velocity = new PVector(random(-3, 3), random(-3, 3));
+  PVector acceleration = new PVector(-velocity.x / 40, -velocity.y / 40);
   int lifetime = 800;
 }
 
@@ -23,7 +23,7 @@ void hitParticleMoveAndDisplay(){
     hitParticles.get(i).position.x += hitParticles.get(i).velocity.x;
     hitParticles.get(i).position.y += hitParticles.get(i).velocity.y;
     stroke(0,100,255,100);
-    strokeWeight(hitParticles.get(i).lifetime / 50);
+    strokeWeight(hitParticles.get(i).lifetime / 40);
     point(hitParticles.get(i).position.x, hitParticles.get(i).position.y);
     hitParticles.get(i).lifetime -= 20;
     if(hitParticles.get(i).lifetime <= 0){
