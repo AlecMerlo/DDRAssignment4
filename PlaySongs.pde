@@ -173,9 +173,19 @@ void playSong(){
   }
 }
 
+void drawLines(){
+  stroke(25);
+  strokeWeight(6);
+  line(90, 100, 90, 900);
+  line(230, 100, 230, 900);
+  line(370, 100, 370, 900);
+  line(510, 100, 510, 900);
+}
+
 void displayNotes(){
   moveParticles();
   drawParticles();
+  drawLines();
   stroke(25);
   //hit placement
   //left
