@@ -1,6 +1,7 @@
 void setupSong(){
   noteTime.clear();
   noteType.clear();
+  //  h e l p
   switch(songChosen){
     case 0:
       bpm = 125;
@@ -123,13 +124,13 @@ void setupSong(){
 void playSong(){
   if(frame % (bpm / 4) == 0){
     switch(songChosen){
-      //California Gurls
+      // California Gurls
       case 0:
         if(beat == 0){
           californiaGurls.play();
         }
         break;
-      //Absolute Territory
+      // Absolute Territory
       case 1:
         if(beat == 0){
           absoluteTerritory.play();
@@ -145,7 +146,7 @@ void playSong(){
   for(int i = 0; i < noteType.size(); i++){
     if(((noteTime.get(i) * 5 - frame) + (bpm * 2)) * 10 < -150){
       missedFrame = 10;
-      health -= 20;
+      health -= 25;
       noteType.remove(i);
       noteTime.remove(i);
     }
@@ -164,15 +165,17 @@ void playSong(){
     ellipse(300,450,400,400);
     hitFrame -=1;
   }
-  displayNotes();
+  displayAndParticles();
   fill(255,100,100);
   rect(0,0,health * 6,20);
   frame += 1;
+  //checks every frame 
   if(health <= 0){
     reset();
   }
 }
 
+// the 4 lines under the circles
 void drawLines(){
   stroke(25);
   strokeWeight(6);
@@ -182,46 +185,58 @@ void drawLines(){
   line(510, 100, 510, 900);
 }
 
-void displayNotes(){
+void displayAndParticles(){
+  // making the bg particles move
   moveParticles();
+  //let there be light!
   drawParticles();
   drawLines();
+  displayNotes();
+  hitParticleMoveAndDisplay();
+}
+
+void displayNotes(){
   stroke(25);
-  //hit placement
-  //left
+  // hit placement (as in circles showing where the player can hit the notes)
+  // left
   fill(150 + (int(leftPressed) * 50), 100, 100);
   ellipse(90, 100, 100, 100);
-  //up
+  // up
   fill(100, 150 + (int(upPressed) * 50), 100);
   ellipse(370, 100, 100, 100);
-  //down
+  // down
   fill(150 + (int(downPressed) * 50), 150 + (int(downPressed) * 50), 100);
   ellipse(230, 100, 100, 100);
-  //right
+  // right
   fill(100, 100, 150 + (int(rightPressed) * 50));
   ellipse(510, 100, 100, 100);
   
+  //displaying the notes to hit
   for(int i = 0; i < noteType.size(); i++){
-    //up
+    // if statements are to figure out which direction the note is facing
+    // up
     fill(0, 150, 0);
     if(noteType.get(i) == 0){
-      ellipse(370, ((noteTime.get(i) * 5 - frame) + 20 + (bpm * 2)) * 10, 90, 90);
+      // draws a circle following the track tied to its directon, to the speed of the song
+      // starts by positioning the note on when its supposed to be played, followed by multiplying it by 50 to properly space out the notes, then subtracting frame to move it up, and multiplying frame by 10 to get to the correct speed.
+      // adding 200 to fix the offset, then adding two bars to give some room before the song starts (bpm (a bar) * 20 (one bar being 10))
+      // I could multiply the whole thing by 10 to make it easier to read but I think it's fine as is
+      ellipse(370, (noteTime.get(i) * 50 - frame * 10) + 200 + (bpm * 20), 90, 90);
     }
-    //down
+    // down
     fill(150, 150, 0);
     if(noteType.get(i) == 1){
-      ellipse(230, ((noteTime.get(i) * 5 - frame) + 20 + (bpm * 2)) * 10, 90, 90);
+      ellipse(230, (noteTime.get(i) * 50 - frame * 10) + 200 + (bpm * 20), 90, 90);
     }
-    //left
+    // left
     fill(150, 0, 0);
     if(noteType.get(i) == 2){
-      ellipse(90, ((noteTime.get(i) * 5 - frame) + 20 + (bpm * 2)) * 10, 90, 90);
+      ellipse(90, (noteTime.get(i) * 50 - frame * 10) + 200 + (bpm * 20), 90, 90);
     }
-    //right
+    // right
     fill(0, 0, 150);
     if(noteType.get(i) == 3){
-      ellipse(510, ((noteTime.get(i) * 5 - frame) + 20 + (bpm * 2)) * 10, 90, 90);
+      ellipse(510, (noteTime.get(i) * 50 - frame * 10) + 200 + (bpm * 20), 90, 90);
     }
   }
-  hitParticleMoveAndDisplay();
 }
